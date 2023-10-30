@@ -4,23 +4,32 @@ services:
     image: dpage/pgadmin4
     container_name: pgadmin4_container
     environment:
-      - PGADMIN_DEFAULT_EMAIL=julian.lfs@gmail.com
+      - PGADMIN_DEFAULT_EMAIL=lfernando.s.nascimento@gmail.com
       - PGADMIN_DEFAULT_PASSWORD=12345
-    ports:
-      - "89:80"
     networks:
       - postgres-network
+    ports:
+      - "89:80"
   postgres:
     image: postgres:10
     container_name: postgres10_container
-    environment:
-      - POSTGRES_PASSWORD=postgres
     ports:
       - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=postgres
     networks:
       - postgres-network
     volumes:
       - /home/luis/data/postgres:/var/lib/postgresql/data
+  application:
+    build: ./
+    ports:
+      - "8080:8080"
+    networks:
+      - postgres-network
+    depends_on:
+      - postgres
+      - pgadmin4
 networks:
   postgres-network:
     driver: bridge
