@@ -15,4 +15,7 @@ a api for a social network about cute animals
 - install [docker compose](https://docs.docker.com/compose/install/)
 - ``` git clone https://github.com/Luiszf/catapi/ ```
 - ``` cd catapi ```
-- ``` docker-compose up ``` 
+- ``` docker-compose up ```
+- add a database called ```posts``` in the [admin page](http://localhost:89/browser/)
+- ctrl + c
+- ``` docker-compose up ```
