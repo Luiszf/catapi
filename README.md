@@ -9,6 +9,8 @@ a api for a social network about cute animals
 | GET | /api/v1/posts/{id} | find post by id |
 | POST | /api/v1/posts | insert a post in the database |
 | DELETE | /api/v1/posts/{id} | remove a post from the database |
+| GET | /api/v1/image/{id} | find a image by id |
+| POST | /api/v1/image | insert a image/png in the database |  
 
 ## runnig in your machine
 
