@@ -1,6 +1,5 @@
 package com.luis.simplerestapi.controller;
 
-import com.luis.simplerestapi.model.ImageData;
 import com.luis.simplerestapi.service.ImageDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,7 +26,7 @@ public class ImageController {
 
     @GetMapping("/{id}")
     public ResponseEntity<?> downloadImageData(@PathVariable Long id){
-        byte[] image = service.dowloadImage(id);
+        byte[] image = service.downloadImage(id);
         return ResponseEntity.status(HttpStatus.OK)
                 .contentType(MediaType.valueOf("image/png"))
                 .body(image);

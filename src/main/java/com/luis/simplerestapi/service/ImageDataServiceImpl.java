@@ -29,7 +29,7 @@ public class ImageDataServiceImpl implements ImageDataService {
     }
 
     @Override
-    public byte[] dowloadImage(Long id) {
+    public byte[] downloadImage(Long id) {
         Optional<ImageData> databaseImageData = repository.findById(id);
         byte[] images = ImageUtils.decompressImage(databaseImageData.get().getFileData());
         return images;
