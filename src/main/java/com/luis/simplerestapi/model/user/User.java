@@ -8,6 +8,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import javax.swing.plaf.SplitPaneUI;
 import java.util.Collection;
 import java.util.List;
 
@@ -26,6 +27,13 @@ public class User implements UserDetails {
     private String login;
     private String password;
     private UserRole role;
+
+
+    public User(String login, String password,  UserRole userRole){
+        this.role = userRole;
+        this.username = login;
+        this.password = password;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
