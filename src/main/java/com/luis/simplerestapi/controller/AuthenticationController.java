@@ -13,6 +13,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.HttpClientErrorException;
 
@@ -41,14 +42,15 @@ public class AuthenticationController {
     }
 
 
+    @PostMapping("/register")
     public ResponseEntity<?> registerUser(@RequestBody RegisterDTO data){
-        if (userRepository.findByLogin(data.username()) != null){
+        if (userRepository.findByLogin(data.login()) != null){
             return ResponseEntity.badRequest().build();
         }
 
         String encryptedPassword = new BCryptPasswordEncoder().encode(data.password());
 
-        User user = new User(data.username(),encryptedPassword,data.userRole());
+        User user = new User(data.login(),encryptedPassword,data.userRole());
 
         this.userRepository.save(user);
 

@@ -2,6 +2,7 @@ package com.luis.simplerestapi.model.user;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
@@ -17,6 +18,7 @@ import java.util.List;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode(of = "uuid")
 public class User implements UserDetails {
 
     @Id
@@ -31,7 +33,7 @@ public class User implements UserDetails {
 
     public User(String login, String password,  UserRole userRole){
         this.role = userRole;
-        this.username = login;
+        this.login = login;
         this.password = password;
     }
 

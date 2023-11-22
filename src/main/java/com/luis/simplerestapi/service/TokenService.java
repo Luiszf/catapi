@@ -7,6 +7,7 @@ import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTDecodeException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.luis.simplerestapi.model.user.User;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.awt.print.PrinterException;
@@ -19,6 +20,7 @@ import java.util.Date;
 @Service
 public class TokenService {
 
+    @Value("&{api.token.secret}")
     private String secret;
 
     public String generateToken(User user) {
@@ -41,18 +43,20 @@ public class TokenService {
 
         try {
             Algorithm algorithm = Algorithm.HMAC256(secret);
-            return JWT.require(algorithm)
+            var login = JWT.require(algorithm)
                     .withIssuer("cat-api")
                     .build()
                     .verify(token)
                     .getSubject();
+            System.out.println("login: "+ login + "||||" + token);
+            return login;
         } catch (JWTVerificationException e){
-            return "";
+            return "luis fer";
         }
     }
 
 
     private Instant getExpiration() {
-        return LocalDateTime.now().plusHours(2).atOffset(ZoneOffset.of("-03:00")).toInstant();
+        return LocalDateTime.now().plusHours(2).toInstant(ZoneOffset.of("-03:00"));
     }
 }

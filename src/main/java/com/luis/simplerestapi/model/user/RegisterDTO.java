@@ -1,7 +1,7 @@
 package com.luis.simplerestapi.model.user;
 
 public record RegisterDTO(
-        String username,
+        String login,
         String password,
         UserRole userRole
 ){}
