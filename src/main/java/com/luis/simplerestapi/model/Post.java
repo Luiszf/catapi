@@ -11,7 +11,7 @@ public class Post {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
+    private long id;
 
     private String content;
 

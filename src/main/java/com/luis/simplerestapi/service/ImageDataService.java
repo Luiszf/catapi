@@ -9,5 +9,5 @@ public interface ImageDataService {
     public String uploadImage(MultipartFile file) throws IOException;
 
 
-    public byte[] downloadImage(Long id);
+    public byte[] dowloadImage(Long id);
 }
