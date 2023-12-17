@@ -1,15 +1,5 @@
 version: "3.8"
 services:
-  pgadmin4:
-    image: dpage/pgadmin4
-    container_name: pgadmin4_container
-    environment:
-      - PGADMIN_DEFAULT_EMAIL=lfernando.s.nascimento@gmail.com
-      - PGADMIN_DEFAULT_PASSWORD=12345
-    networks:
-      - postgres-network
-    ports:
-      - "89:80"
   postgres:
     image: postgres:10
     container_name: postgres10_container
@@ -31,7 +21,6 @@ services:
       - postgres-network
     depends_on:
       - postgres
-      - pgadmin4
 networks:
   postgres-network:
     driver: bridge
