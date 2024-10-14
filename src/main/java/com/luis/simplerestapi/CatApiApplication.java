@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.sound.midi.SysexMessage;
 import java.awt.*;
 
-@SpringBootApplication
+@SpringBootApplication()
 public class CatApiApplication {
 
 	public static void main(String[] args) {

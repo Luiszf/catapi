@@ -1,5 +1,13 @@
 # catapi
-a api for a social network about cute animals
+basic crud implementation in spring with image support
+## data models
+
+### Post
+
+| content | string    |
+|---|---|
+| image  | File\blob |
+| likes  | integer   |
 
 ## working endpoints
 
@@ -18,6 +26,4 @@ a api for a social network about cute animals
 - ``` git clone https://github.com/Luiszf/catapi/ ```
 - ``` cd catapi ```
 - ``` docker-compose up ```
-- add a database called ```posts``` in the [admin page](http://localhost:89/browser/)
-- ctrl + c
-- ``` docker-compose up ```
+- default root url ```127.0.0.1:8000/```

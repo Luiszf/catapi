@@ -1,26 +1,24 @@
-version: "3.8"
 services:
-  postgres:
-    image: postgres:10
-    container_name: postgres10_container
-    ports:
-      - "5432:5432"
-    environment:
-      - POSTGRES_PASSWORD=postgres
+  db:
+    image: postgres:16.2-alpine3.19
+    container_name: catapi-db
     networks:
-      - postgres-network
+      - backend
+    restart: always
     volumes:
-      - /home/luis/data/postgres:/var/lib/postgresql/data
-  application:
-    build: ./
-    links:
-      - postgres
+      - .data:/etc/data
     ports:
-      - "8080:8080"
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+  backend:
+    build: .
     networks:
-      - postgres-network
-    depends_on:
-      - postgres
+      - backend
+    ports:
+      - 8000:8080
 networks:
-  postgres-network:
-    driver: bridge
+  backend:
+    name: backend

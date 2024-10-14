@@ -1,11 +1,13 @@
-FROM azul/zulu-openjdk-alpine:17-latest
-LABEL authors="luis"
+FROM gradle:jdk21-alpine
 
+WORKDIR .
+
+COPY src/ src/
+COPY gradle/ gradle/
 COPY gradlew gradlew
-COPY settings.gradle settings.gradle
 COPY build.gradle build.gradle
-COPY src ./src
-COPY src/main/resources .config/
-COPY gradle ./gradle
+COPY settings.gradle settings.gradle
 
-CMD ["./gradlew", "bootRun"]
+
+
+CMD ["gradle", "bootrun"]
